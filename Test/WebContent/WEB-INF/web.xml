@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    version="3.0">
+    
+    <session-config> 
+		<session-timeout>120</session-timeout>
+	</session-config>
+	
+    <servlet>
+        <servlet-name>Connexion</servlet-name>
+        <servlet-class>com.octest.servlet.Connexion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/Connexion</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>Accueil</servlet-name>
+        <servlet-class>com.octest.servlet.Accueil</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Accueil</servlet-name>
+        <url-pattern>/Accueil</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Deconnexion</servlet-name>
+        <servlet-class>com.octest.servlet.Deconnexion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deconnexion</servlet-name>
+        <url-pattern>/Deconnexion</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>Inscription</servlet-name>
+    <servlet-class>com.octest.servlet.Inscription</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Inscription</servlet-name>
+    <url-pattern>/Inscription</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+	<filter-name>Restriction_Filter</filter-name>
+	<filter-class>com.octest.filters.Restriction_Filter</filter-class>
+  </filter>
+  <filter-mapping>
+	<filter-name>Restriction_Filter</filter-name>
+	<url-pattern>/Restreint/*</url-pattern>
+  </filter-mapping>
+  
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
+        </jsp-property-group>
+    </jsp-config>
+</web-app>
