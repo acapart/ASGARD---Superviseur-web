@@ -22,12 +22,12 @@ import com.octest.bdd.TestJDBC;
 
 
 //@WebServlet("/Accueil")
-public class Inscription extends HttpServlet {
+public class AjoutUtilisateur extends HttpServlet {
 	
     public static final String ATT_USER = "utilisateur";
     public static final String ATT_FORM = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
-    public static final String VUE = "/WEB-INF/Inscription.jsp";
+    public static final String VUE = "/WEB-INF/AjoutUtilisateur.jsp";
     
     
     

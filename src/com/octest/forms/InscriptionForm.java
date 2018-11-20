@@ -34,10 +34,10 @@ public final class InscriptionForm {
 		String confirmation = getValeurChamp( request, CHAMP_CONF );
 		String nom = getValeurChamp( request, CHAMP_NOM );
 
-		User utilisateur = new User();
+		User utilisateur = new User(email,motDePasse,nom);
 
 		try {
-			validationEmail( email );
+			validationEmail( User.getEmail() );
 		} catch ( Exception e ) {
 			setErreur( CHAMP_EMAIL, e.getMessage() );
 		}

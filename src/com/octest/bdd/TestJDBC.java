@@ -29,7 +29,7 @@ public class TestJDBC {
     	    }
 
     	    /* Connexion à la base de données */
-    	    String url = "jdbc:mysql://localhost:3306/bdd_asgard";
+    	    String url = "jdbc:mysql://192.168.1.80:3306/bdd_asgard";
     	    String utilisateur = "root";
     	    String motDePasse = "root";
     	    Connection connexion = null;

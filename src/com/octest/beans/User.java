@@ -6,6 +6,11 @@ public class User {
     private String motDePasse;
     private String nom;
 
+    public User(String email, String motDePasse, String nom) {
+    	this.email = email;
+    	this.motDePasse = motDePasse;
+    	this.nom = nom;
+    }
     public void setEmail(String email) {
 	this.email = email;
     }

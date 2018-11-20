@@ -7,3 +7,7 @@
 
 # pas de fichier caché
 .*
+
+# pas le fichier README
+README.md
+
