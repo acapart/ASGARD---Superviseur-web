@@ -8,6 +8,16 @@
 		<session-timeout>120</session-timeout>
 	</session-config>
 	
+	<servlet>
+		<servlet-name>GestionTestJDBC</servlet-name>
+		<servlet-class>com.octest.servlet.GestionTestJDBC</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GestionTestJDBC</servlet-name>
+		<url-pattern>/testjdbc</url-pattern>
+	</servlet-mapping>
+	
     <servlet>
         <servlet-name>Connexion</servlet-name>
         <servlet-class>com.octest.servlet.Connexion</servlet-class>
