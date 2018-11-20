@@ -1,0 +1,9 @@
+# pas de fichier .class
+*.class
+
+# que les fichiers src et WebContent
+!/src
+!/WebContent
+
+# pas de fichier caché
+.*
