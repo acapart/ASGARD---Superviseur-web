@@ -37,7 +37,7 @@ public final class InscriptionForm {
 		User utilisateur = new User(email,motDePasse,nom);
 
 		try {
-			validationEmail( User.getEmail() );
+			validationEmail( utilisateur.getEmail() );
 		} catch ( Exception e ) {
 			setErreur( CHAMP_EMAIL, e.getMessage() );
 		}

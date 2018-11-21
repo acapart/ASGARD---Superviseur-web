@@ -13,13 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/VoirUtilisateurs")
 public class VoirUtilisateurs extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	public static final String ATT_USER = "utilisateur";
 	public static final String VUE = "/WEB-INF/VoirUtilisateur.jsp";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		User user = new User();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

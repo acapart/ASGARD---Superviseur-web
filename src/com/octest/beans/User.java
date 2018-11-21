@@ -11,6 +11,11 @@ public class User {
     	this.motDePasse = motDePasse;
     	this.nom = nom;
     }
+    
+    public User() {
+    	
+    }
+    
     public void setEmail(String email) {
 	this.email = email;
     }
