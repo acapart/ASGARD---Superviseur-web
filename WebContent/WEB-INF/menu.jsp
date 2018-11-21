@@ -5,7 +5,6 @@
     <li><a href="/Test/Accueil">Accueil</a></li>
     <li><a href="/Test/Inscription">Inscription</a></li>
     <li><a href="/Test/Connexion">Connexion</a></li>
-    <li><a href="/Test/AjoutUtilisateur">Ajouter un utilisateur</a></li>
     <li><a href="/Test/Deconnexion">Deconnexion</a></li>
     
 </ul>

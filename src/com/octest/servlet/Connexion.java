@@ -9,9 +9,6 @@ import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
 
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,8 +40,8 @@ public class Connexion extends HttpServlet {
 
 
 	/*
-	 * Mï¿½thode utilitaire gï¿½rant la crï¿½ation d'un cookie et son ajout ï¿½ la
-	 * rï¿½ponse HTTP.
+	 * Méthode utilitaire gérant la création d'un cookie et son ajout à la
+	 * réponse HTTP.
 	 */
 	private static void setCookie( HttpServletResponse response, String nom, String valeur, int maxAge ) {
 		Cookie cookie = new Cookie( nom, valeur );
@@ -53,18 +50,18 @@ public class Connexion extends HttpServlet {
 	}
 
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		/* Tentative de rï¿½cupï¿½ration du cookie depuis la requï¿½te */
+		/* Tentative de récupération du cookie depuis la requête */
 		String derniereConnexion = getCookieValue( request, COOKIE_DERNIERE_CONNEXION );
-		/* Si le cookie existe, alors calcul de la durï¿½e */
+		/* Si le cookie existe, alors calcul de la durée */
 		if ( derniereConnexion != null ) {
-			/* Rï¿½cupï¿½ration de la date courante */
+			/* Récupération de la date courante */
 			DateTime dtCourante = new DateTime();
-			/* Rï¿½cupï¿½ration de la date prï¿½sente dans le cookie */
+			/* Récupération de la date présente dans le cookie */
 			DateTimeFormatter formatter = DateTimeFormat.forPattern( FORMAT_DATE );
 			DateTime dtDerniereConnexion = formatter.parseDateTime( derniereConnexion );
-			/* Calcul de la durï¿½e de l'intervalle */
+			/* Calcul de la durée de l'intervalle */
 			Period periode = new Period( dtDerniereConnexion, dtCourante );
-			/* Formatage de la durï¿½e de l'intervalle */
+			/* Formatage de la durée de l'intervalle */
 			PeriodFormatter periodFormatter = new PeriodFormatterBuilder()
 					.appendYears().appendSuffix( " an ", " ans " )
 					.appendMonths().appendSuffix( " mois " )
@@ -75,15 +72,15 @@ public class Connexion extends HttpServlet {
 					.appendSeconds().appendSuffix( " seconde", " secondes" )
 					.toFormatter();
 			String intervalleConnexions = periodFormatter.print( periode );
-			/* Ajout de l'intervalle en tant qu'attribut de la requï¿½te */
+			/* Ajout de l'intervalle en tant qu'attribut de la requête */
 			request.setAttribute( ATT_INTERVALLE_CONNEXIONS, intervalleConnexions );
 		}
 		/* Affichage de la page de connexion */
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
 	/**
-	 * Mï¿½thode utilitaire gï¿½rant la rï¿½cupï¿½ration de la valeur d'un cookie donnï¿½
-	 * depuis la requï¿½te HTTP.
+	 * Méthode utilitaire gérant la récupération de la valeur d'un cookie donné
+	 * depuis la requête HTTP.
 	 */
 	private static String getCookieValue( HttpServletRequest request, String nom ) {
 		Cookie[] cookies = request.getCookies();
@@ -98,18 +95,18 @@ public class Connexion extends HttpServlet {
 	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		/* Prï¿½paration de l'objet formulaire */
+		/* Préparation de l'objet formulaire */
 		ConnexionForm form = new ConnexionForm();
 
-		/* Traitement de la requï¿½te et rï¿½cupï¿½ration du bean en rï¿½sultant */
+		/* Traitement de la requête et récupération du bean en résultant */
 		User utilisateur = form.connecterUtilisateur( request );
 
-		/* Rï¿½cupï¿½ration de la session depuis la requï¿½te */
+		/* Récupération de la session depuis la requête */
 		HttpSession session = request.getSession();
 
 		/**
 		 * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
-		 * Utilisateur ï¿½ la session, sinon suppression du bean de la session.
+		 * Utilisateur à la session, sinon suppression du bean de la session.
 		 */
 		if ( form.getErreurs().isEmpty() ) {
 			session.setAttribute( ATT_SESSION_USER, utilisateur );
@@ -117,14 +114,14 @@ public class Connexion extends HttpServlet {
 			session.setAttribute( ATT_SESSION_USER, null );
 		}
 
-		/* Si et seulement si la case du formulaire est cochï¿½e */
+		/* Si et seulement si la case du formulaire est cochée */
 		if ( request.getParameter( CHAMP_MEMOIRE ) != null ) {
-			/* Rï¿½cupï¿½ration de la date courante */
+			/* Récupération de la date courante */
 			DateTime dt = new DateTime();
 			/* Formatage de la date et conversion en texte */
 			DateTimeFormatter formatter = DateTimeFormat.forPattern( FORMAT_DATE );
 			String dateDerniereConnexion = dt.toString( formatter );
-			/* Crï¿½ation du cookie, et ajout ï¿½ la rï¿½ponse HTTP */
+			/* Création du cookie, et ajout à la réponse HTTP */
 			setCookie( response, COOKIE_DERNIERE_CONNEXION, dateDerniereConnexion, COOKIE_MAX_AGE );
 		} else {
 			/* Demande de suppression du cookie du navigateur */
@@ -135,9 +132,6 @@ public class Connexion extends HttpServlet {
 		/* Stockage du formulaire et du bean dans l'objet request */
 		request.setAttribute( ATT_FORM, form );
 		request.setAttribute( ATT_USER, utilisateur );
-		
-	
-		
 
 		this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 	}
