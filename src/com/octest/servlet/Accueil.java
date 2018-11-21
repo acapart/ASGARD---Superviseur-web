@@ -14,7 +14,7 @@ import com.octest.beans.User;
 import com.octest.forms.ConnexionForm;
 
 
-@WebServlet("/Test")
+@WebServlet("/ASGARD---Superviseur-web")
 public class Accueil extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
@@ -32,12 +32,12 @@ public class Accueil extends HttpServlet {
 
           
 
-            /* Récupération de la session depuis la requête */
+            /* Rï¿½cupï¿½ration de la session depuis la requï¿½te */
             HttpSession session = request.getSession();
 
             /**
              * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
-             * Utilisateur à la session, sinon suppression du bean de la session.
+             * Utilisateur ï¿½ la session, sinon suppression du bean de la session.
              */
        
             
