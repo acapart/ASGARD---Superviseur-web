@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.octest.beans.User;
 
 public class TestJDBC {
-    /* La liste qui contiendra tous les résultats de nos essais */
+    /* La liste qui contiendra tous les rï¿½sultats de nos essais */
     private List<String> messages = new ArrayList<String>();
 
     
@@ -22,42 +22,42 @@ public class TestJDBC {
     	    try {
     	        messages.add( "Chargement du driver..." );
     	        Class.forName( "com.mysql.jdbc.Driver" );
-    	        messages.add( "Driver chargé !" );
+    	        messages.add( "Driver chargï¿½ !" );
     	    } catch ( ClassNotFoundException e ) {
-    	        messages.add( "Erreur lors du chargement : le driver n'a pas été trouvé dans le classpath ! <br/>"
+    	        messages.add( "Erreur lors du chargement : le driver n'a pas ï¿½tï¿½ trouvï¿½ dans le classpath ! <br/>"
     	                + e.getMessage() );
     	    }
 
-    	    /* Connexion à la base de données */
-    	    String url = "jdbc:mysql://192.168.1.80:3306/bdd_asgard";
+    	    /* Connexion ï¿½ la base de donnï¿½es */
+    	    String url = "jdbc:mysql://localhost:3306/bdd_asgard";
     	    String utilisateur = "root";
     	    String motDePasse = "root";
     	    Connection connexion = null;
     	    Statement statement = null;
     	    ResultSet resultat = null;
     	    try {
-    	        messages.add( "Connexion à la base de données..." );
+    	        messages.add( "Connexion ï¿½ la base de donnï¿½es..." );
     	        connexion = DriverManager.getConnection( url, utilisateur, motDePasse );
-    	        messages.add( "Connexion réussie !" );
+    	        messages.add( "Connexion rï¿½ussie !" );
 
-    	        /* Création de l'objet gérant les requêtes */
+    	        /* Crï¿½ation de l'objet gï¿½rant les requï¿½tes */
     	        statement = connexion.createStatement();
-    	        messages.add( "Objet requête créé !" );
+    	        messages.add( "Objet requï¿½te crï¿½ï¿½ !" );
 
     	       
     	        
-    	        /*Récupération des paramètres d'URL saisis par l'utilisateur */
+    	        /*Rï¿½cupï¿½ration des paramï¿½tres d'URL saisis par l'utilisateur */
     	        String paramEmail = request.getParameter( "email" );
     	        String paramMotDePasse = request.getParameter( "motDePasse" );
     	        String paramNom = request.getParameter( "nom" );
 
     	        if ( paramEmail != null && paramMotDePasse != null && paramNom != null ) {
-    	            /* Exécution d'une requête d'écriture */
-    	        /* Exécution d'une requête d'écriture */
+    	            /* Exï¿½cution d'une requï¿½te d'ï¿½criture */
+    	        /* Exï¿½cution d'une requï¿½te d'ï¿½criture */
     	        int statut = statement.executeUpdate( "INSERT INTO User (email, mot_de_passe, nom, date_inscription) VALUES ('alex@hotmail.fr', MD5('123'), 'alexis', NOW());" );
 
     	        /* Formatage pour affichage dans la JSP finale. */
-    	        messages.add( "Résultat de la requête d'insertion : " + statut + "." );
+    	        messages.add( "Rï¿½sultat de la requï¿½te d'insertion : " + statut + "." );
     	       }
     	    } catch ( SQLException e ) {
     	        messages.add( "Erreur lors de la connexion : <br/>"
